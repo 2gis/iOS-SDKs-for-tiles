@@ -17,6 +17,7 @@ public class DGSTileOverlay: MKTileOverlay {
 	internal init(isRetina: Bool = true) {
 		self.isRetina = isRetina
 		super.init(urlTemplate: nil)
+		self.cache.countLimit = 20
 		if isRetina {
 			self.tileSize = CGSize(width: 512, height: 512)
 		} else {
@@ -35,8 +36,6 @@ public class DGSTileOverlay: MKTileOverlay {
 			let task = self.urlSession.dataTask(with: url, completionHandler: {
 				[weak self] (data, response, error) in
 				if let data = data {
-					let image = UIImage(data: data)
-					print(image?.scale)
 					self?.cache.setObject(data as NSData, forKey: url as NSURL)
 				}
 				result(data, error)
@@ -45,7 +44,4 @@ public class DGSTileOverlay: MKTileOverlay {
 		}
 	}
 
-
-
 }
-
