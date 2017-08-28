@@ -4,11 +4,12 @@
 
 You should set in your Info.plist file to be able download our tiles.
 ```
+<key>NSAppTransportSecurity</key>
 <dict>
 	<key>NSAllowsArbitraryLoads</key>
 	<true/>
 </dict>
-</plist>
+
 ```
 
 You should use `DGSTileOverlay` in your ViewController to render our tiles
