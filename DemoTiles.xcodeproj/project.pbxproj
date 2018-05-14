@@ -7,20 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		73A05D011F51A00600178871 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73A05D001F51A00600178871 /* LaunchScreen.storyboard */; };
-		73A05D031F51A02F00178871 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73A05D021F51A02F00178871 /* Main.storyboard */; };
+		731A8A0420A989DA00250629 /* GisMapViewHtml.html in Resources */ = {isa = PBXBuildFile; fileRef = 731A8A0120A989DA00250629 /* GisMapViewHtml.html */; };
+		731A8A0520A989DA00250629 /* generalize.js in Resources */ = {isa = PBXBuildFile; fileRef = 731A8A0220A989DA00250629 /* generalize.js */; };
+		731A8A0620A989DA00250629 /* quadtree.js in Resources */ = {isa = PBXBuildFile; fileRef = 731A8A0320A989DA00250629 /* quadtree.js */; };
+		731A8A0820A98B2000250629 /* point-guest.svg in Resources */ = {isa = PBXBuildFile; fileRef = 731A8A0720A98B2000250629 /* point-guest.svg */; };
+		731A8A0E20A99C8700250629 /* point.svg in Resources */ = {isa = PBXBuildFile; fileRef = 731A8A0C20A99C8700250629 /* point.svg */; };
+		731A8A0F20A99C8700250629 /* point-active.svg in Resources */ = {isa = PBXBuildFile; fileRef = 731A8A0D20A99C8700250629 /* point-active.svg */; };
+		731A8A1120A9A17F00250629 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731A8A1020A9A17F00250629 /* ViewController.swift */; };
+		731A8A1320A9A37100250629 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 731A8A1220A9A37100250629 /* Main.storyboard */; };
+		73373C6A20A9A3F3009AAE06 /* WebMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731A89D420A9516B00250629 /* WebMapVC.swift */; };
+		73373C6B20A9A42C009AAE06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73A05D001F51A00600178871 /* LaunchScreen.storyboard */; };
 		73CD97091F4FF18000B47667 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD97081F4FF18000B47667 /* AppDelegate.swift */; };
-		73CD970B1F4FF18000B47667 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD970A1F4FF18000B47667 /* ViewController.swift */; };
 		73CD97101F4FF18000B47667 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73CD970F1F4FF18000B47667 /* Assets.xcassets */; };
 		73CD971B1F4FF1C600B47667 /* DGSTileOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD971A1F4FF1C600B47667 /* DGSTileOverlay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		731A89D420A9516B00250629 /* WebMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebMapVC.swift; sourceTree = "<group>"; };
+		731A8A0120A989DA00250629 /* GisMapViewHtml.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = GisMapViewHtml.html; sourceTree = "<group>"; };
+		731A8A0220A989DA00250629 /* generalize.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = generalize.js; sourceTree = "<group>"; };
+		731A8A0320A989DA00250629 /* quadtree.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = quadtree.js; sourceTree = "<group>"; };
+		731A8A0720A98B2000250629 /* point-guest.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "point-guest.svg"; sourceTree = "<group>"; };
+		731A8A0C20A99C8700250629 /* point.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = point.svg; sourceTree = "<group>"; };
+		731A8A0D20A99C8700250629 /* point-active.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "point-active.svg"; sourceTree = "<group>"; };
+		731A8A1020A9A17F00250629 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		731A8A1220A9A37100250629 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		73A05D001F51A00600178871 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		73A05D021F51A02F00178871 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		73CD97051F4FF18000B47667 /* DemoTiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoTiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CD97081F4FF18000B47667 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		73CD970A1F4FF18000B47667 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		73CD970F1F4FF18000B47667 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73CD97141F4FF18000B47667 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73CD971A1F4FF1C600B47667 /* DGSTileOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGSTileOverlay.swift; sourceTree = "<group>"; };
@@ -37,6 +51,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		731A8A0A20A98F5C00250629 /* TIles */ = {
+			isa = PBXGroup;
+			children = (
+				731A8A1020A9A17F00250629 /* ViewController.swift */,
+				73CD971A1F4FF1C600B47667 /* DGSTileOverlay.swift */,
+			);
+			path = TIles;
+			sourceTree = "<group>";
+		};
+		731A8A0B20A98F6700250629 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				731A89D420A9516B00250629 /* WebMapVC.swift */,
+				731A8A0220A989DA00250629 /* generalize.js */,
+				731A8A0120A989DA00250629 /* GisMapViewHtml.html */,
+				731A8A0720A98B2000250629 /* point-guest.svg */,
+				731A8A0D20A99C8700250629 /* point-active.svg */,
+				731A8A0C20A99C8700250629 /* point.svg */,
+				731A8A0320A989DA00250629 /* quadtree.js */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
 		73CD96FC1F4FF18000B47667 = {
 			isa = PBXGroup;
 			children = (
@@ -57,11 +94,11 @@
 			isa = PBXGroup;
 			children = (
 				73CD97081F4FF18000B47667 /* AppDelegate.swift */,
-				73CD970A1F4FF18000B47667 /* ViewController.swift */,
+				731A8A0B20A98F6700250629 /* Web */,
+				731A8A0A20A98F5C00250629 /* TIles */,
 				73CD970F1F4FF18000B47667 /* Assets.xcassets */,
 				73CD97141F4FF18000B47667 /* Info.plist */,
-				73CD971A1F4FF1C600B47667 /* DGSTileOverlay.swift */,
-				73A05D021F51A02F00178871 /* Main.storyboard */,
+				731A8A1220A9A37100250629 /* Main.storyboard */,
 				73A05D001F51A00600178871 /* LaunchScreen.storyboard */,
 			);
 			path = DemoTiles;
@@ -94,11 +131,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = 2gis;
 				TargetAttributes = {
 					73CD97041F4FF18000B47667 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -127,8 +165,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				73CD97101F4FF18000B47667 /* Assets.xcassets in Resources */,
-				73A05D011F51A00600178871 /* LaunchScreen.storyboard in Resources */,
-				73A05D031F51A02F00178871 /* Main.storyboard in Resources */,
+				731A8A1320A9A37100250629 /* Main.storyboard in Resources */,
+				73373C6B20A9A42C009AAE06 /* LaunchScreen.storyboard in Resources */,
+				731A8A0F20A99C8700250629 /* point-active.svg in Resources */,
+				731A8A0E20A99C8700250629 /* point.svg in Resources */,
+				731A8A0820A98B2000250629 /* point-guest.svg in Resources */,
+				731A8A0520A989DA00250629 /* generalize.js in Resources */,
+				731A8A0420A989DA00250629 /* GisMapViewHtml.html in Resources */,
+				731A8A0620A989DA00250629 /* quadtree.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,8 +183,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73CD970B1F4FF18000B47667 /* ViewController.swift in Sources */,
+				731A8A1120A9A17F00250629 /* ViewController.swift in Sources */,
 				73CD971B1F4FF1C600B47667 /* DGSTileOverlay.swift in Sources */,
+				73373C6A20A9A3F3009AAE06 /* WebMapVC.swift in Sources */,
 				73CD97091F4FF18000B47667 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,6 +207,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -169,6 +215,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -219,6 +266,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -226,6 +274,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -266,7 +315,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.doublegis.DemoTiles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -282,7 +332,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.doublegis.DemoTiles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -40,7 +40,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
 		self.mapView.addGestureRecognizer(tapGR)
 	}
 
-	dynamic func tap(tapGR: UITapGestureRecognizer) {
+	@objc dynamic func tap(tapGR: UITapGestureRecognizer) {
 		guard tapGR.state == .recognized else { return }
 
 		let taplocation = tapGR.location(in: tapGR.view)

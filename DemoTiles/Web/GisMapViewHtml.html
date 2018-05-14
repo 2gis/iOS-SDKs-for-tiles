@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=basic" data-id="dgLoader"></script>
+
+  <style type="text/css">
+  html {
+    margin: 0;
+    padding: 0;
+    height: 100%
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%
+  }
+  #map {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .marker._pin:before {
+    position: absolute;
+    margin: -8px 0 0 -8px;
+    width: 16px;
+    height: 16px;
+    content: '';
+    background-size: cover;
+  }
+  .marker._hidden {
+    display: none;
+    visibility: hidden;
+  }
+  .marker._outOfViewPort {
+    display: none;
+    visibility: hidden;
+  }
+  .marker._pointReviews:before {
+    background: url('point.svg');
+  }
+  .marker._pointNoReviews:before {
+    background: url('point.svg');
+  }
+  .marker._pointActive:before {
+    position: absolute;
+    margin: -12px 0 0 -12px;
+    width: 24px;
+    height: 24px;
+    background: url('point-active.svg');
+    border: 0px;
+    content: '';
+    background-size: cover;
+  }
+  .marker._pointReviewsMultiple:before {
+    background: url('point.svg');
+  }
+  .marker._pointNoReviewsMultiple:before {
+    background: url('point.svg');
+  }
+  .marker._pointActiveMultiple:before {
+    position: absolute;
+    margin: -12px 0 0 -12px;
+    width: 24px;
+    height: 24px;
+    background: url('point-active.svg');
+    border: 0px;
+    content: '';
+    background-size: cover;
+  }
+  .marker._userLocationMarker:before {
+    position: absolute;
+    margin: -18px 0 0 -18px;
+    width: 36px;
+    height: 36px;
+    background-color: white;
+    border-radius: 18px;
+    content: '';
+  }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script type="text/javascript">
+  var map, markerGroup, userLocationMarker, userDivIcon;
+  var userLocationMarkerZIndexOffset = 9999999;
+  DG.then(function() {
+    window.location = 'js-call://jscall?type=mapDidLoaded';
+    return DG.plugin('quadtree.js');
+  }).then(function() {
+    return DG.plugin('generalize.js');
+  })
+  .then(function () {
+    map = DG.map('map', {
+     "center": ["HTML_LAT_TEMPLATE", "HTML_LON_TEMPLATE"],
+     "zoom": "HTML_ZOOM_TEMPLATE",
+     "minZoom": 7,
+     "zoomControl": false,
+   });
+    markerGroup = L.markerGeneralizeGroup();
+    markerGroup.addTo(map);
+    userDivIcon = L.divIcon({
+        iconSize: L.point(0, 0),
+        className: 'marker',
+        html: '<img src="HTML_USER_AVATAR_TEMPLATE" style="width:32px;height:32px;border-radius:16px;position: absolute;margin: -16px 0 0 -16px;">'
+    });
+  });
+  
+  function zoomIn() {
+      DG.then(function(){map.zoomIn()});
+  }
+  
+  function zoomOut() {
+      DG.then(function(){map.zoomOut()});
+  }
+  
+  function setUserLocationMarker(lat, lon) {
+      DG.then(function(){
+          if (userLocationMarker === undefined) {
+              userLocationMarker = L.marker([lat, lon], {
+                  icon: userDivIcon,
+                  zIndexOffset:userLocationMarkerZIndexOffset
+              });
+              userLocationMarker.addTo(map);
+              L.DomUtil.addClass(userLocationMarker._icon, '_userLocationMarker');
+          } else {
+              userLocationMarker.setLatLng([lat, lon]);
+          }
+      });
+  }
+  
+  function centerUserLocationMarker() {
+      DG.then(function(){map.setView(userLocationMarker.getLatLng(), map.getMaxZoom());});
+  }
+  
+  function setMarkersSelectable(selectable) {
+      DG.then(function(){markerGroup._isMarkersSelectable = selectable});
+  }
+  
+  function setMarkers(markers, lat, lon) {
+    this.removeMarkers();
+    DG.then(function () {
+      var markerIcon = L.divIcon({
+       iconSize: L.point(0, 0),
+       className: 'marker'
+     });
+      var i, markerArr = [];
+      for (i = 0; i < markers.length; i++) {
+        var marker = L.marker([markers[i][0], markers[i][1]], {
+          icon: markerIcon,
+          rating: markers[i][2],
+          filialIDs: markers[i][3],
+          reviewsCount: markers[i][4],
+          buildingID: markers[i][5],
+        }).on('click', didTouchMarker);
+        markerArr.push(marker);
+      }
+      markerGroup.addLayers(markerArr).once('invalidationFinish', function() {
+        var bounds = markerGroup.getBounds();
+        var latDelta = bounds.getNorthEast().lat - bounds.getSouthWest().lat;
+        var lngDelta = bounds.getNorthEast().lng - bounds.getSouthWest().lng;
+        var newBounds = DG.latLngBounds(
+          DG.latLng(
+            bounds.getSouthWest().lat - 0.1 * latDelta, 
+            bounds.getSouthWest().lng - 0.1 * latDelta), 
+          DG.latLng(
+            bounds.getNorthEast().lat + 0.1 * latDelta, 
+            bounds.getNorthEast().lng + 0.1 * lngDelta));
+        map.fitBounds(newBounds);
+      });
+      markerArr.forEach(function (marker) {
+        if (marker.options.filialIDs.length > 1) {
+          if (marker.options.reviewsCount > 0) {
+            L.DomUtil.addClass(marker._icon, '_pointReviewsMultiple');
+          } else {
+            L.DomUtil.addClass(marker._icon, '_pointNoReviewsMultiple');
+          }
+        } else if (marker.options.reviewsCount > 0) {
+          L.DomUtil.addClass(marker._icon, '_pointReviews');
+        } else {
+          L.DomUtil.addClass(marker._icon, '_pointNoReviews');
+        }
+      });
+      this.setUserLocationMarker(lat, lon);
+    });
+  }
+  
+  function selectMarker(filialID) {
+    DG.then(function () {
+        if (!markerGroup._isMarkersSelectable) {
+            return;
+        }
+        var markerToSelect;
+        markerGroup._otherMarkers.some(function (marker) {
+           marker.options.filialIDs.some(function (tempFilialID) {
+               if (tempFilialID == filialID) {
+                   markerToSelect = marker;
+                   return true;
+               }
+           });
+           return markerToSelect !== undefined;
+        });
+        if (markerToSelect !== undefined) {
+            if (markerToSelect.options.filialIDs.length > 1) {
+                L.DomUtil.addClass(markerToSelect._icon, '_pointActiveMultiple');
+            } else {
+                L.DomUtil.addClass(markerToSelect._icon, '_pointActive');
+            }
+            markerGroup._selectedMarker = markerToSelect;
+            window.location = 'js-call://jscall?type=markerTouched&filial_ids=' + markerToSelect.options.filialIDs
+            + '&building_id=' + markerToSelect.options.buildingID
+            + '&reviews_count=' + markerToSelect.options.reviewsCount
+            + '&rating=' + markerToSelect.options.rating
+            + '&lat=' + markerToSelect.getLatLng().lat
+            + '&lon=' + markerToSelect.getLatLng().lng
+            + '&selected=' + (markerGroup._selectedMarker !== undefined ? 1 : 0);
+        }
+     });
+  }
+
+  function deselectMarker() {
+    DG.then(function () {
+      if (markerGroup._selectedMarker.options.filialIDs.length > 1) {
+          L.DomUtil.removeClass(markerGroup._selectedMarker._icon, '_pointActiveMultiple');
+        } else {
+          L.DomUtil.removeClass(markerGroup._selectedMarker._icon, '_pointActive');
+        }
+        markerGroup._selectedMarker = undefined;
+        markerGroup._invalidateMarkers();
+    });
+  }
+  
+  function removeMarkers() {
+    DG.then(function () {
+        markerGroup.clearLayers();
+        markerGroup._selectedMarker = undefined;
+    });
+  }
+  
+  function didTouchMarker(e) {
+    DG.then(function () {
+      if (!markerGroup._isMarkersSelectable) {
+          return;
+      }
+      var marker = e.target;
+      if (markerGroup._selectedMarker !== undefined) {
+        if (markerGroup._selectedMarker === marker) {
+          markerGroup._selectedMarker = undefined;
+          deselectMarker(marker);
+        } else {
+          deselectMarker(markerGroup._selectedMarker);
+          selectMarker(marker);
+          markerGroup._selectedMarker = marker;
+        }
+      } else {
+        selectMarker(marker);
+        markerGroup._selectedMarker = marker;
+      }
+
+      function selectMarker(marker) {
+        if (marker.options.filialIDs.length > 1) {
+          L.DomUtil.addClass(marker._icon, '_pointActiveMultiple');
+        } else {
+          L.DomUtil.addClass(marker._icon, '_pointActive');
+        }
+      }
+      function deselectMarker(marker) {
+        if (marker.options.filialIDs.length > 1) {
+          L.DomUtil.removeClass(marker._icon, '_pointActiveMultiple');
+        } else {
+          L.DomUtil.removeClass(marker._icon, '_pointActive');
+        }
+      }
+      markerGroup._invalidateMarkers();
+      window.location = 'js-call://jscall?type=markerTouched&filial_ids=' + marker.options.filialIDs
+        + '&building_id=' + marker.options.buildingID
+        + '&reviews_count=' + marker.options.reviewsCount
+        + '&rating=' + marker.options.rating
+        + '&lat=' + marker.getLatLng().lat
+        + '&lon=' + marker.getLatLng().lng
+        + '&selected=' + (markerGroup._selectedMarker !== undefined ? 1 : 0);
+    });
+  }
+  </script>
+</body>
+</html>
