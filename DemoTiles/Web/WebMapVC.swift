@@ -96,7 +96,7 @@ class WebMapVC: UIViewController, UIWebViewDelegate {
 
 	// MARK: UIWebViewDelegate
 
-	func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+	func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
 		if let url = request.url,
 			let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
 			components.scheme == "js-call" {

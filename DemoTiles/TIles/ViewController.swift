@@ -18,7 +18,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.mapView.insert(self.tilesOverlay, at: 0, level: .aboveLabels)
+		self.mapView.insertOverlay(self.tilesOverlay, at: 0, level: .aboveLabels)
 		self.mapView.delegate = self
 		self.mapView.frame = self.view.bounds
 		self.mapView.autoresizingMask = [ .flexibleHeight, .flexibleWidth ]
