@@ -84,5 +84,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
 		self.present(ac, animated: true, completion: nil)
 	}
 
+	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+		if mapView.camera.altitude < 700 && !self.isModifyingZoom {
+			mapView.camera.altitude = 700
+		}
+
+	}
+
 }
 
