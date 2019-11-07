@@ -17,7 +17,6 @@ You should use `DGSTileOverlay` in your ViewController to render our tiles
 
 **We only support 0-18 zoom levels. Other zoom levels will not be supported.**
 
-
 ```
 import MapKit
 
@@ -47,3 +46,4 @@ return MKTileOverlayRenderer(overlay: overlay)
 ### Web map example
 <img src="https://github.com/2gis/iOS-SDKs-for-tiles/blob/master/Images/Web.png?raw=true" width="200">
 
+Also we have OpenGL map SDK:  [MapGL](https://github.com/2gis/MapGL-iOS)  
