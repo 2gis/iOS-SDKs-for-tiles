@@ -15,6 +15,8 @@ You should set in your Info.plist file to be able download our tiles.
 
 You should use `DGSTileOverlay` in your ViewController to render our tiles
 
+**We only support 0-18 zoom levels. Other zoom levels will not be supported.**
+
 
 ```
 import MapKit
