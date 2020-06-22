@@ -8,13 +8,13 @@ public class DGSTileOverlay: MKTileOverlay {
 
 	override public func url(forTilePath path: MKTileOverlayPath) -> URL {
 		if self.isRetina {
-			return URL(string: String(format: "https://rtile2.maps.2gis.com/tiles?x=%d&y=%d&z=%d&v=1", path.x, path.y, path.z))!
+			return URL(string: String(format: "https://tile2.maps.2gis.com/tiles?x=%d&y=%d&z=%d&v=1&r=g&ts=online_hd", path.x, path.y, path.z))!
 		} else {
 			return URL(string: String(format: "https://tile2.maps.2gis.com/tiles?x=%d&y=%d&z=%d&v=1", path.x, path.y, path.z))!
 		}
 	}
 
-	internal init(isRetina: Bool = true) {
+	init(isRetina: Bool = true) {
 		self.isRetina = isRetina
 		super.init(urlTemplate: nil)
 		self.cache.countLimit = 20
